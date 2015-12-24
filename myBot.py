@@ -1,6 +1,11 @@
+#!/usr/bin/python
 from twython import Twython
 import json
 
+frases = ["I love Penguins!", "Penguins are awesome!", "I like penguins : )", "Penguins are awesome", "I love Penguins!"]
+def pick():
+    n = random().randint(0, len(frases))
+    return frases[n]
 def auth():
     with open("access.json", 'r') as f:
         db = json.load(f)

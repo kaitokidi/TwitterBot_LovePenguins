@@ -21,7 +21,7 @@ def load():
 def respond(twitter, top_tweet):
     name = top_tweet["user"]["screen_name"]
     if name != "Penguin___Lover":
-        twitter.update_status(status="@%s, I love Penguins!" %(name), in_reply_to_status_id=top_tweet["id"]) 
+        twitter.update_status(status="@%s, I love Penguins!" %(name)+pick(), in_reply_to_status_id=top_tweet["id"]) 
     
 def dump(queue, info):
     with open("queue.json", 'w') as f:

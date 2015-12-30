@@ -36,7 +36,13 @@ def main():
     info["sinceid"] = tweets["search_metadata"]["max_id"]
     triggers = ("Penguins","penguins","Penguin","penguin")
     to_add = [tweet for tweet in tweets["statuses"] if not tweet["retweeted"] and not tweet.has_key("retweeted_status")]
-    to_add = [tweet for tweet in to_add if (tweet["text"].__contains__(triggers[0]) or tweet["text"].__contains__(triggers[1]) or tweet["text"].__contains__(triggers[2]) or tweet["text"].__contains__(triggers[3]))]
+    #to_add = [tweet for tweet in to_add if (tweet["text"].__contains__(triggers[0]) or tweet["text"].__contains__(triggers[1]) or tweet["text"].__contains__(triggers[2]) or tweet["text"].__contains__(triggers[3]))]
+    #TOTEST
+    totaltext = tweet["text"]
+    t = [x in totaltext if x[0] != '@']
+#    [y for y in x if y != 2]
+    to_add = [tweet for tweet in to_add if ( (triggers[0] in t) or (triggers[1] in t) or (triggers[2] in t) or (triggers[3] in t) )]
+    #TOTEST
     queue = list(queue) + to_add
     mx = max(len(to_add), 20)
     if len(queue) > mx:

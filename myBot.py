@@ -2,7 +2,7 @@
 from twython import Twython
 import json
 
-frases = ["I love Penguins!", "Penguins are awesome!", "I like penguins : )", "Penguins are awesome", "I love Penguins!"]
+frases = ["I love Penguins!", "Penguins are awesome!", "I like penguins : )", "Penguins are the best", "Penguins FTW", "Penguins <3", "Oh, Penguins!", "so you are thinking about penguins too ^^", "I love Penguins!"]
 def pick():
     n = random().randint(0, len(frases))
     return frases[n]
@@ -45,6 +45,6 @@ def main():
         respond(twitter, queue.pop())
     dump(queue,info)
     
-#it would have to run on cron every minute
+#it would have to run on cron every n minutes, it would be nice not to get banned for spam T.T
 if __name__ == "__main__":
     main()

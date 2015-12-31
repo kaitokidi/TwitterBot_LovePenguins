@@ -42,7 +42,7 @@ def main():
     #TOTEST
 
     totaltext = tweet["text"]
-    #print totaltext
+    print totaltext
 
     tt = [x for x in totaltext.split() if x[0] != '@']
     #print tt

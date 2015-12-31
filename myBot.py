@@ -22,6 +22,7 @@ def load():
 def respond(twitter, top_tweet):
     name = top_tweet["user"]["screen_name"]
     if name != "Penguin___Lover":
+        #print "name",name
         twitter.update_status(status="@%s, " %(name)+pick(), in_reply_to_status_id=top_tweet["id"]) 
     
 def dump(queue, info):
@@ -42,20 +43,33 @@ def main():
 
     #TOTEST
 
-    totaltext = tweet["text"]
-    print totaltext
+    #totaltext = tweet["text"]
+    #print totaltext
 
-    tt = [x for x in totaltext.split() if x[0] != '@']
+    #tt = [x for x in totaltext.split() if x[0] != '@']
     #print tt
-    t = ' '.join(tt)
-    print t
+    #t = ' '.join(tt)
+    #print t
     #    [y for y in x if y != 2]
-    to_add = [tweet for tweet in to_add if ( (triggers[0] in t) or (triggers[1] in t) or (triggers[2] in t) or (triggers[3] in t) )]
+    #to_add = [tweet for tweet in to_add if ( (triggers[0] in t) or (triggers[1] in t) or (triggers[2] in t) or (triggers[3] in t) )]
+
+    filtered = []
+    for tweet in to_add:
+        totaltext = tweet["text"]
+        #print totaltext
+
+        tt = [x for x in totaltext.split() if x[0] != '@']
+        #print tt
+        t = ' '.join(tt)
+        #print t
+	
+        if ( (triggers[0] in t) or (triggers[1] in t) or (triggers[2] in t) or (triggers[3] in t) ):
+            filtered.append(tweet)
     #TOTEST
 
 
-    queue = list(queue) + to_add
-    mx = max(len(to_add), 20)
+    queue = list(queue) + filtered
+    mx = max(len(filtered), 20)
     if len(queue) > mx:
         queue = queue[-mx:]
     if len(queue) > 0:

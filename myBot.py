@@ -46,9 +46,9 @@ def main():
     print totaltext
 
     tt = [x for x in totaltext.split() if x[0] != '@']
-    print tt
+    #print tt
     t = ' '.join(tt)
-    print t
+    #print t
     #    [y for y in x if y != 2]
     to_add = [tweet for tweet in to_add if ( (triggers[0] in t) or (triggers[1] in t) or (triggers[2] in t) or (triggers[3] in t) )]
     #TOTEST

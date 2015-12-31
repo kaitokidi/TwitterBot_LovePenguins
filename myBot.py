@@ -22,7 +22,7 @@ def load():
 def respond(twitter, top_tweet):
     name = top_tweet["user"]["screen_name"]
     if name != "Penguin___Lover":
-        twitter.update_status(status="@%s, I love Penguins!" %(name)+pick(), in_reply_to_status_id=top_tweet["id"]) 
+        twitter.update_status(status="@%s, " %(name)+pick(), in_reply_to_status_id=top_tweet["id"]) 
     
 def dump(queue, info):
     with open("queue.json", 'w') as f:
@@ -48,7 +48,7 @@ def main():
     tt = [x for x in totaltext.split() if x[0] != '@']
     #print tt
     t = ' '.join(tt)
-    #print t
+    print t
     #    [y for y in x if y != 2]
     to_add = [tweet for tweet in to_add if ( (triggers[0] in t) or (triggers[1] in t) or (triggers[2] in t) or (triggers[3] in t) )]
     #TOTEST

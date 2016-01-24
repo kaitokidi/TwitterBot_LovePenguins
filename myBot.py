@@ -34,7 +34,7 @@ def dump(queue, info):
 def main():
 
     #think is ok
-    r = random ()%4
+    r = random.randint(0,4)
     if ( r > 2 ):
         exit ()
 

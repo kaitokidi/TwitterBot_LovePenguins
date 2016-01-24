@@ -33,8 +33,8 @@ def dump(queue, info):
     
 def main():
 
-    #think is ok
-    r = random.randint(0,4)
+    #skip it some times to get different ranges of publication because is controlled by cron. : p
+    r = randint(0,4)
     if ( r > 2 ):
         exit ()
 

@@ -56,7 +56,9 @@ def main():
         #print tt
         t = ' '.join(tt)
         #print t
-	
+
+        # forbiden array with hockey score match winners loosers loose
+	# not forbidden [k] 
         if ( (triggers[0] in t) or (triggers[1] in t) or (triggers[2] in t) or (triggers[3] in t) ):
             filtered.append(tweet)
 

@@ -43,7 +43,7 @@ def main():
     tweets = twitter.search(q="penguins", result_type="recent", since_id=info["sinceid"], count='100')
     info["sinceid"] = tweets["search_metadata"]["max_id"]
     triggers = ("Penguins","penguins","Penguin","penguin")
-    forbiden = ("Hockey","hockey","match","winners","win","lost","vs","loosers")
+    forbiden = ("Hockey","hockey","match","winners","win","lost","vs","loosers","Pittsburgh","pittsburgh","pitsburg","Winners")
     to_add = [tweet for tweet in tweets["statuses"] if not tweet["retweeted"] and not tweet.has_key("retweeted_status")]
 
     #to_add = [tweet for tweet in to_add if (tweet["text"].__contains__(triggers[0]) or tweet["text"].__contains__(triggers[1]) or tweet["text"].__contains__(triggers[2]) or tweet["text"].__contains__(triggers[3]))]

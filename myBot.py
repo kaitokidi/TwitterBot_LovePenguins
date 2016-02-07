@@ -3,7 +3,7 @@ from twython import Twython
 from random import randint
 import json
 
-frases = ["I love Penguins!", "Penguins are awesome!", "I like penguins : )", "Penguins are the best", "Penguins FTW", "Penguins <3", "Oh, Penguins!", "so you are thinking about penguins too ^^", "I love Penguins!"]
+frases = ["I love Penguins!", "Penguins are awesome!", "I like penguins : )", "Penguins are the best", "Penguins FTW", "Penguins <3", "Oh, Penguins!", "so you are thinking about penguins too ^^", "I love Penguins!","Penguins! : D"]
 def pick():
     n = randint(0, len(frases))
     return frases[n]
@@ -43,7 +43,7 @@ def main():
     tweets = twitter.search(q="penguins", result_type="recent", since_id=info["sinceid"], count='100')
     info["sinceid"] = tweets["search_metadata"]["max_id"]
     triggers = ("Penguins","penguins","Penguin","penguin")
-    forbiden = ("Hockey","hockey","match","winners","win","lost","vs","loosers","Pittsburgh","pittsburgh","pitsburg","Winners")
+    forbiden = ("Hockey","hockey","match","winners","win","lost","vs","loosers","Pittsburgh","pittsburgh","pitsburg","Pitsburg","Winners")
     to_add = [tweet for tweet in tweets["statuses"] if not tweet["retweeted"] and not tweet.has_key("retweeted_status")]
 
     #to_add = [tweet for tweet in to_add if (tweet["text"].__contains__(triggers[0]) or tweet["text"].__contains__(triggers[1]) or tweet["text"].__contains__(triggers[2]) or tweet["text"].__contains__(triggers[3]))]
@@ -59,12 +59,12 @@ def main():
         #print t
 
         # forbiden array with hockey score match winners loosers loose
-	    # not forbiden [k] 
-	    notForbiden = True;
-	    for word in forbiden:
+	# not forbiden [k] 
+	notForbiden = True;
+	for word in forbiden:
             if(word in t):
-                notForbiden = False
-        trigered = ((triggers[0] in t) or (triggers[1] in t) or (triggers[2] in t) or (triggers[3] in t))
+            notForbiden = False
+        triggered = ((triggers[0] in t) or (triggers[1] in t) or (triggers[2] in t) or (triggers[3] in t))
         if (notForbiden and triggered ):
             filtered.append(tweet)
 

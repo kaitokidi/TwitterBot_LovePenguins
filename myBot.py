@@ -4,6 +4,7 @@ from random import randint
 import json
 
 frases = ["I love Penguins!", "Penguins are awesome!", "I like penguins : )", "Penguins are the best", "Penguins FTW", "Penguins <3", "Oh, Penguins!", "so you are thinking about penguins too ^^", "I love Penguins!","Penguins! : D"]
+forbiddenNames = ["Penguin___Lover", "Superalvi100", "Superalvi400"]
 def pick():
     n = randint(0, len(frases))
     return frases[n]
@@ -21,7 +22,7 @@ def load():
 
 def respond(twitter, top_tweet):
     name = top_tweet["user"]["screen_name"]
-    if name != "Penguin___Lover":
+    if not name in forbiddenNames:
         #print "name",name
         twitter.update_status(status="@%s, " %(name)+pick(), in_reply_to_status_id=top_tweet["id"]) 
     
@@ -43,7 +44,7 @@ def main():
     tweets = twitter.search(q="penguins", result_type="recent", since_id=info["sinceid"], count='100')
     info["sinceid"] = tweets["search_metadata"]["max_id"]
     triggers = ("Penguins","penguins","Penguin","penguin")
-    forbiden = ("Hockey","hockey","match","winners","win","lost","game","Game","GAME","vs","loosers","Pittsburgh","pittsburgh","pitsburg","Pitsburg","Winners","NHL","#NHL","nhl","victory","Crosby")
+    forbiden = ("Hockey","hockey","match","winners","win","lost","game","Game","GAME","vs","loosers","Pittsburgh","pittsburgh","pitsburg","Pitsburg","Winners","NHL","#NHL","nhl","victory","Crosby","@Superalvi100","@Superalvi400")
     to_add = [tweet for tweet in tweets["statuses"] if not tweet["retweeted"] and not tweet.has_key("retweeted_status")]
 
     #to_add = [tweet for tweet in to_add if (tweet["text"].__contains__(triggers[0]) or tweet["text"].__contains__(triggers[1]) or tweet["text"].__contains__(triggers[2]) or tweet["text"].__contains__(triggers[3]))]
@@ -62,7 +63,7 @@ def main():
 	# not forbiden [k] 
 	notForbiden = True;
 	for word in forbiden:
-            if(word in t):
+            if(word in tt):
                 notForbiden = False
         triggered = ((triggers[0] in t) or (triggers[1] in t) or (triggers[2] in t) or (triggers[3] in t))
         if (notForbiden and triggered ):

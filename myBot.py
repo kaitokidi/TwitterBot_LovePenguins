@@ -4,7 +4,7 @@ from random import randint
 import json
 
 frases = ["I love Penguins!", "Penguins are awesome!", "I like penguins : )", "Penguins are the best", "Penguins FTW", "Penguins <3", "Oh, Penguins!", "so you are thinking about penguins too ^^", "I love Penguins!","Penguins! : D"]
-forbiddenNames = ["Penguin___Lover", "Superalvi100", "Superalvi400"]
+forbiddenNames = ["Penguin___Lover", "Superalvi100", "Superalvi400","logicfrenzy"]
 def pick():
     n = randint(0, len(frases))
     return frases[n]

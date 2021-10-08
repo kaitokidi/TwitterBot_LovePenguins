@@ -24,7 +24,7 @@ def respond(twitter, top_tweet):
     name = top_tweet["user"]["screen_name"]
     if not name in forbiddenNames:
         #print "name",name
-        twitter.update_status(status="@%s, " %(name)+pick(), in_reply_to_status_id=top_tweet["id"]) 
+        twitter.update_status(status="@%s " %(name)+pick(), in_reply_to_status_id=top_tweet["id"]) 
     
 def dump(queue, info):
     with open("queue.json", 'w') as f:
